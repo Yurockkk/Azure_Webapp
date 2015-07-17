@@ -12,7 +12,16 @@ var port = process.env.PORT || 1337;
 	console.log("Server has started.");
 */
 
-http.createServer(function onRequest(req, res) {
+http.createServer(function (req, res) {
+	function start(){
+		function onRequest(request,response){
+
+			console.log("request for " + pathname + "received.");
+			response.writeHead(200,{'Content-Type': 'text/plain'});
+			response.end('Hello World\n');
+		}
+		http.createServer(onRequest).listen(port);
+	}
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Hello Gungerger\n');
   console.log("Server has started");
