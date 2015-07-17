@@ -1,7 +1,6 @@
 var http = require('http')
 var port = process.env.PORT || 1337;
 
-function start(){
 	function onRequest(request, response){
 		console.log("request for "+ pathname + "received.");
 		response.writeHead(200,{"Content-Type": "text/plain"});
@@ -11,7 +10,6 @@ function start(){
 
 	http.createServer(onRequest).listen(port);
 	console.log("Server has started.");
-}
 
 /*
 http.createServer(function(req, res) {
