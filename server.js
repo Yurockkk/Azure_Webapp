@@ -1,6 +1,7 @@
 var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
+var fs = require('fs');
 var port = process.env.PORT || 1337;
 
 http.createServer(function(request,response){
@@ -22,6 +23,10 @@ http.createServer(function(request,response){
 			if (typeof qs.format !== 'undefined' && qs.format === 'json'){
 				type = 'application/json';
 				output = JSON.stringify({data: 'test'});
+			}else if(typeof qs.format !== 'undefined' && qs.format === 'html'){
+				var html = fs.readFileSync('testtest.html');
+				type = 'text/html';
+				output = html;
 			}
 			response.writeHead(200,{'Content-Type':type});
 			response.write(output);
