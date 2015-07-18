@@ -8,4 +8,4 @@ function start(){
 	}).listen(port);
 }
 
-exports.start = start;
+export.start = start;
