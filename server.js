@@ -11,11 +11,13 @@ http.createServer(function(request,response){
 			response.writeHead(200,{'Content-Type':'text/plain'});
 			response.write('Hello, gunger');
 			response.end();
+			console.log('pathname=' + pathname);
 		},
 		'/login':function(request,response){
 			response.writeHead(200,{'Content-Type':'application/json'});
 			response.write(JSON.stringify({data: 'test'}));
 			response.end();
+			console.log('pathname=' + pathname);
 
 		}
 	}
@@ -26,6 +28,7 @@ http.createServer(function(request,response){
 			response.writeHead(404);
 			response.write('404 not found');
 			response.end();
+			console.log('pathname=' + pathname);
 	}
 	
 
