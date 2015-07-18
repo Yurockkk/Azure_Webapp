@@ -1,4 +1,4 @@
-var bb = require("./bb.js");
+var bb = require('./bb');
 bb.start();
 /*
 function onRequest(request,response){
