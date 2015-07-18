@@ -1,9 +1,11 @@
 var http = require('http');
 var url = require('url');
+var querystring = require('querystring');
 var port = process.env.PORT || 1337;
 
 http.createServer(function(request,response){
 	var pathname = url.parse(request.url).pathname;
+	var qs = querystring.parse(url.parse(request.url).query);
 	console.log('required' + pathname +'request.');
 
 	var routes = {
@@ -14,10 +16,18 @@ http.createServer(function(request,response){
 			console.log('pathname=' + pathname);
 		},
 		'/login':function(request,response){
-			response.writeHead(200,{'Content-Type':'application/json'});
-			response.write(JSON.stringify({data: 'test'}));
+			var type = 'text/plain';
+			var output = 'test';
+
+			if (typeof qs.format !== 'undefined' && qs.format === 'json'){
+				type = 'application/json';
+				output = JSON.stringify({data: 'test'});
+			}
+			response.writeHead(200,{'Content-Type':type});
+			response.write(output);
 			response.end();
 			console.log('pathname=' + pathname);
+
 
 		}
 	}
