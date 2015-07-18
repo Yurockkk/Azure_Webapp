@@ -7,3 +7,5 @@ function start(){
   	res.end('Hello gunger\n');
 	}).listen(port);
 }
+
+exports.start = start;
