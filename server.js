@@ -1,4 +1,4 @@
-var b = require("./bb");
+var bb = require("./bb");
 bb.start();
 /*
 function onRequest(request,response){
