@@ -1,5 +1,7 @@
 
 var bb = require('./bb.js');
+var http = require('http')
+var port = process.env.PORT || 1337;
 bb.start();
 
 /*
