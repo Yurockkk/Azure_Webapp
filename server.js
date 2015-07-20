@@ -8,9 +8,7 @@ var app=express();
 
 app.set('port',process.env.PORT || 1337); 
 app.get('/',function(request,response{
-			response.writeHead(200,{'Content-Type':'text/plain'});
-			response.write('Hello, gunger');
-			response.end();
+	response.send('Hellooo');
 }));
 
 http.createServer(app).listen(app.get('port'));
