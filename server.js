@@ -6,11 +6,15 @@ var express=require('express');
 var app=express();
 var port = process.env.PORT || 1337;
 
+app.set('port',process.env.PORT || 1337); 
+app.get('/',function(request,response{
+	response.end('Hellooo');
+}));
 
-//http.createServer(app).listen(app.get('port'));
+http.createServer(app).listen(app.get('port'));
 
 
-
+/*
 http.createServer(function(request,response){
 	var pathname = url.parse(request.url).pathname;
 	var qs = querystring.parse(url.parse(request.url).query);
@@ -55,9 +59,9 @@ http.createServer(function(request,response){
 	app.set('port',process.env.PORT || 1337);
 	console.log('express server listening on port ' + app.get('port'));
 
-}).listen(app.get('port'));
+}).listen(port);
 
-
+*/
 
 /*
 function start(req, res){
