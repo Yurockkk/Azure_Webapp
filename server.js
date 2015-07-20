@@ -4,11 +4,13 @@ var querystring = require('querystring');
 var fs = require('fs');
 var express=require('express');
 var app=express();
-var port = process.env.PORT || 1337;
+//var port = process.env.PORT || 1337;
 
 app.set('port',process.env.PORT || 1337); 
 app.get('/',function(request,response{
-	response.end('Hellooo');
+			response.writeHead(200,{'Content-Type':'text/plain'});
+			response.write('Hello, gunger');
+			response.end();
 }));
 
 http.createServer(app).listen(app.get('port'));
