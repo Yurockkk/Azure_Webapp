@@ -7,9 +7,9 @@ var app=express();
 //var port = process.env.PORT || 1337;
 
 app.set('port',process.env.PORT || 1337); 
-app.get('/',function(request,response{
+app.get('/',function(request,response){
 	response.send('Hellooo');
-}));
+});
 
 http.createServer(app).listen(app.get('port'));
 
