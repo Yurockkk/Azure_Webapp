@@ -2,6 +2,8 @@ var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
 var fs = require('fs');
+var express=require('express');
+var app=express();
 var port = process.env.PORT || 1337;
 
 http.createServer(function(request,response){
@@ -45,7 +47,8 @@ http.createServer(function(request,response){
 			response.end();
 			console.log('pathname=' + pathname);
 	}
-	
+	app.set('port',process.env.PORT || 1337);
+	console.log('express server listening on port ' + app.get('port'));
 
 }).listen(port);
 
