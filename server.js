@@ -14,6 +14,11 @@ app.get('/login',function(req,res){
 
 	res.send('Helo, gunger');
 })
+app.get('/banana',function(req,res){
+
+	res.send('tesetest.html');
+})
+
 
 http.createServer(app).listen(app.get('port'));
 
