@@ -10,6 +10,10 @@ app.set('port',process.env.PORT || 1337);
 app.get('/',function(request,response){
 	response.send('Hellooo');
 });
+app.get('/login',function(req,res){
+
+	res.send('Helo, gunger');
+})
 
 http.createServer(app).listen(app.get('port'));
 
