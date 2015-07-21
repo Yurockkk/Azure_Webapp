@@ -16,7 +16,7 @@ app.get('/login',function(req,res){
 })
 app.get('/banana',function(req,res){
 
-	res.send('testtest.html');
+	res.render('testtest.html');
 })
 
 
