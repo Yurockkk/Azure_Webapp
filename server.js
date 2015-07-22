@@ -1,83 +1,64 @@
-var http = require('http');
-var url = require('url');
-var querystring = require('querystring');
-var fs = require('fs');
-var express=require('express');
-var app=express();
-//var port = process.env.PORT || 1337;
+var TaskList = require('./routes/tasklist');
+var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
-app.set('port',process.env.PORT || 1337); 
-app.get('/',function(request,response){
-	response.send('Hellooo');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', taskList.showTasks.bind(taskList));
+app.post('/addtask', taskList.addTask.bind(taskList));
+app.post('/completetask', taskList.completeTask.bind(taskList));
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
-app.get('/login',function(req,res){
 
-	res.send('Helo, gunger');
-})
-app.get('/banana',function(req,res){
+// error handlers
 
-	res.sendfile('testtest.html');
-})
-
-
-http.createServer(app).listen(app.get('port'));
-
-
-/*
-http.createServer(function(request,response){
-	var pathname = url.parse(request.url).pathname;
-	var qs = querystring.parse(url.parse(request.url).query);
-	console.log('required' + pathname +'request.');
-
-	var routes = {
-		'/': function(request,response){
-			response.writeHead(200,{'Content-Type':'text/plain'});
-			response.write('Hello, gunger');
-			response.end();
-			console.log('pathname=' + pathname);
-		},
-		'/login':function(request,response){
-			var type = 'text/plain';
-			var output = 'test';
-
-			if (typeof qs.format !== 'undefined' && qs.format === 'json'){
-				type = 'application/json';
-				output = JSON.stringify({data: 'test'});
-			}else if(typeof qs.format !== 'undefined' && qs.format === 'html'){
-				var html = fs.readFileSync('testtest.html');
-				type = 'text/html';
-				output = html;
-			}
-			response.writeHead(200,{'Content-Type':type});
-			response.write(output);
-			response.end();
-			console.log('pathname=' + pathname);
-
-
-		}
-	}
-
-	if(typeof routes[pathname] === 'function'){
-		routes[pathname](request,response);
-	}else{
-			response.writeHead(404);
-			response.write('404 not found');
-			response.end();
-			console.log('pathname=' + pathname);
-	}
-	app.set('port',process.env.PORT || 1337);
-	console.log('express server listening on port ' + app.get('port'));
-
-}).listen(port);
-
-*/
-
-/*
-function start(req, res){
-res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello World\n');
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
 }
 
-http.createServer(start).listen(port);
-*/
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
 
+app.listen(3000); // Listen on port 3000
+module.exports = app;
