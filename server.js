@@ -2,12 +2,9 @@ var http = require('http');
 var url = require('url');
 var express = require('express');
 var app = express();
-var port = process.env.port || 1337;
+//var port = process.env.port || 1337;
 
-http.createServer(function (req, res) {
-	var pathname = url.parse(req.url).pathname;
-	console.log('Received '+pathname +'request');
-
+	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
 		res.send('Hello World');
 		console.log('In /');
@@ -22,6 +19,19 @@ http.createServer(function (req, res) {
 		res.sendfile('testtest.html');
 		console.log('In /banana');
 	})
+
+	http.createServer(app).listen(app.get('port'),function(req,res){
+		console.log("express server listen to "+ app.get('port'));
+	});
+
+
+
+/*
+http.createServer(function (req, res) {
+	var pathname = url.parse(req.url).pathname;
+	console.log('Received '+pathname +'request');
+
+	
 
 	/*
 	var routes={
@@ -47,3 +57,5 @@ http.createServer(function (req, res) {
 	*/
 
 }).listen(port);
+
+*/
