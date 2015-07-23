@@ -33,7 +33,7 @@ http.createServer(function (req, res) {
 
 	
 
-	/*
+	
 	var routes={
 		'/': function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -54,7 +54,7 @@ http.createServer(function (req, res) {
 		res.writeHead(404);
    		res.end('404 not found\n');
 	}
-	*/
+	
 
 }).listen(port);
 
