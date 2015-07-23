@@ -10,14 +10,17 @@ http.createServer(function (req, res) {
 
 	app.get('/',function(req,res){
 		res.send('Hello World');
+		console.log('In /');
 	});
 
 	app.get('/login',function(req,res){
 		res.send('Hello Gunger');
+		console.log('In /login');
 	});
 
-	app.get('banana',function(req,res){
-		res.sendfile(testtest.html);
+	app.get('/banana',function(req,res){
+		res.sendfile('testtest.html');
+		console.log('In /banana');
 	})
 
 	/*
