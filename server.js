@@ -2,7 +2,21 @@ var http = require('http');
 var url = require('url');
 var express = require('express');
 var app = express();
-//var port = process.env.port || 1337;
+
+//set mongoose
+var mongoose = require('mongoose');
+var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
+var Schema = mongoose.Schema;
+
+var Todo = new Schema({
+	user_id		: String,
+	content 	: String,
+	updated	_at : Date,
+	phone		: int
+});
+
+mongoose.model('Todo',Todo);
+mongoose.connect(connectionString);
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
@@ -18,7 +32,14 @@ var app = express();
 	app.get('/banana',function(req,res){
 		res.sendfile('testtest.html');
 		console.log('In /banana');
-	})
+	});
+
+	app.get('/test',function(req,res){
+		console.log("In /test, name= ", req.query.name);
+		console.log("In /test, tel= ", req.query.tel);
+
+	});
+
 
 	http.createServer(app).listen(app.get('port'),function(req,res){
 		console.log("express server listen to "+ app.get('port'));
