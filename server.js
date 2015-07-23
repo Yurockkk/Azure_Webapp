@@ -39,6 +39,7 @@ mongoose.connect(connectionString);
 	app.get('/test',function(req,res){
 		console.log("In /test, name= ", req.query.name);
 		console.log("In /test, tel= ", req.query.tel);
+		res.send('name='+ req.query.name+'\n'+ 'tel= '+ req.query.tel );
 
 	});
 
