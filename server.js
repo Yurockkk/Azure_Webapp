@@ -14,7 +14,7 @@ var Schema = mongoose.Schema;
 
 var Todo = new Schema({
     name	   : String,
-    tel		   : int
+    tel		   : String
 });
 console.log('mongoose setup Schema');
 
