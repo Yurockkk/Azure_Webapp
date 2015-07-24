@@ -18,7 +18,7 @@ var TodoSchema = mongoose.Schema({
 });
 console.log('mongoose setup Schema');
 
-var Todo= mongoose.model('Todo',TodoSchema);
+var User= mongoose.model('Todo',TodoSchema);
 
 mongoose.connect(connectionString,function(err){
 	if(err){
@@ -32,7 +32,7 @@ console.log('mongoose setup model and connetion');
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
-		 res.send("<a href='/Todo'>Show Todos</a>");
+		 res.send("<a href='/User'>Show Users</a>");
 		//res.send('Hello World');
 		//console.log('In /');
 	});
@@ -50,7 +50,7 @@ console.log('mongoose setup model and connetion');
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
-		var user = new Todo();
+		var user = new User();
 		user.name=req.query.name;
 		user.phone=req.query.phone;
 		user.save(function( err, todo, count ){
@@ -59,7 +59,7 @@ console.log('mongoose setup model and connetion');
 			//res.redirect('/');
 		});
 
-	app.get('/Todo',function(req,res){
+	app.get('/User',function(req,res){
 		Todo.find({},function(err,docs){
 			res.json(docs);
 		});
