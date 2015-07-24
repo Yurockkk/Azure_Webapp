@@ -60,7 +60,7 @@ console.log('mongoose setup model and connetion');
 			//res.redirect('/');
 		});
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
-
+		res.redirect('/');
 	});
 
 
