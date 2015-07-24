@@ -3,10 +3,12 @@ var url = require('url');
 var express = require('express');
 var app = express();
 
-/*
+
 //set mongoose
 var mongoose = require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
+console.log('mongoose setup connectionString');
+/*
 //var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
 var Schema = mongoose.Schema;
 
