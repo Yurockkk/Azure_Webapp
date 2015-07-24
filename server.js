@@ -26,7 +26,7 @@ var Todo = new Schema({
 */
 console.log('mongoose setup Schema');
 
-mongoose.model('Todo',TodoSchema);
+var Todo= mongoose.model('Todo',TodoSchema);
 
 mongoose.connect(connectionString,function(err){
 	if(err){
