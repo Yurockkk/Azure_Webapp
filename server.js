@@ -32,7 +32,7 @@ console.log('mongoose setup model and connetion');
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
-		 res.send("<a href='/Todo'>Show Users</a>");
+		 res.send("<a href='/Todo'>Show Todos</a>");
 		//res.send('Hello World');
 		//console.log('In /');
 	});
