@@ -8,7 +8,7 @@ var app = express();
 var mongoose = require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 console.log('mongoose setup connectionString');
-/*
+
 //var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
 var Schema = mongoose.Schema;
 
@@ -19,6 +19,9 @@ var Todo = new Schema({
 	phone		: int
 });
 
+console.log('mongoose setup Schema');
+
+/*
 mongoose.model('Todo',Todo);
 mongoose.connect(connectionString);
 console.log('mongoose setup');
