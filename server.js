@@ -7,10 +7,10 @@ var app = express();
 //set mongoose
 var mongoose = require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
-//console.log('mongoose setup connectionString');
-
-var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
 console.log('mongoose setup connectionString');
+
+//var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
+//console.log('mongoose setup connectionString');
 
 var Schema = mongoose.Schema;
 
@@ -50,7 +50,7 @@ console.log('mongoose setup model and connetion');
 			tel		:req.query.tel
 		}).save(function(err,todo,count){
 			console.log(" create success!!");
-			res.redirect('/');
+			//res.redirect('/');
 		});
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
 
