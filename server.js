@@ -53,14 +53,14 @@ console.log('mongoose setup model and connetion');
 		var user = new User();
 		user.name=req.query.name;
 		user.phone=req.query.phone;
-		user.save(function( err, todo, count ){
+		user.save(function( err, user, count ){
     		res.redirect( '/' );
 			console.log(" create success!!");
 			//res.redirect('/');
 		});
 
 	app.get('/User',function(req,res){
-		Todo.find({},function(err,docs){
+		User.find({},function(err,docs){
 			res.json(docs);
 		});
 	});
