@@ -52,6 +52,15 @@ console.log('mongoose setup model and connetion');
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
+		var user = new Todo();
+		user.name=req.query.name;
+		user.phone=req.query.phone;
+		user.save(function( err, todo, count ){
+    		todo.redirect( '/' );
+			console.log(" create success!!");
+			//res.redirect('/');
+		});
+		/*
 		new Todo({
 			name	:req.query.name,
 			phone	:req.query.phone
@@ -59,7 +68,7 @@ console.log('mongoose setup model and connetion');
     		todo.redirect( '/' );
 			console.log(" create success!!");
 			//res.redirect('/');
-		});
+		});*/
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
 		//res.redirect('/');
 	});
