@@ -15,8 +15,7 @@ var Schema = mongoose.Schema;
 var Todo = new Schema({
 	user_id		: String,
 	content 	: String,
-	updated	_at : Date,
-	phone		: int
+	updated	_at : Date
 });
 
 console.log('mongoose setup Schema');
