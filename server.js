@@ -9,8 +9,6 @@ var mongoose = require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 console.log('mongoose setup connectionString');
 
-
-
 //var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
 //console.log('mongoose setup connectionString');
 
@@ -18,12 +16,6 @@ var TodoSchema = mongoose.Schema({
 	name	   : String,
     phone	   : String
 });
-/*
-var Todo = new Schema({
-    name	   : String,
-    phone	   : String
-});
-*/
 console.log('mongoose setup Schema');
 
 var Todo= mongoose.model('Todo',TodoSchema);
@@ -65,6 +57,12 @@ console.log('mongoose setup model and connetion');
 			console.log(" create success!!");
 			//res.redirect('/');
 		});
+
+	app.get('/yubo',function(req,res){
+		Todo.find({},function(err,docs){
+			res.json(docs);
+		});
+	});
 		/*
 		new Todo({
 			name	:req.query.name,
