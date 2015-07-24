@@ -65,6 +65,14 @@ console.log('mongoose setup model and connetion');
 			res.json(docs);
 		});
 	});
+
+	app.get('/users/:phone', function (req, res) {
+    if (req.params.phone) {
+        User.find({ phone: req.params.email }, function (err, docs) {
+            res.json(docs);
+        });
+    }
+});
 		/*
 		new Todo({
 			name	:req.query.name,
