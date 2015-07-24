@@ -44,8 +44,8 @@ console.log('mongoose setup model and connetion');
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, tel= ", req.query.tel);
 		new Todo({
-			name:req.query.name,
-			tel	:req.query.tel
+			name	:req.query.name,
+			tel		:req.query.tel
 		}).save(function(err,todo,count){
 			console.log(" create success!!");
 			res.redirect('/');
