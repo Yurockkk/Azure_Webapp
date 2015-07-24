@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 console.log('mongoose setup connectionString');
 
+
+
 //var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
 //console.log('mongoose setup connectionString');
 
@@ -20,10 +22,16 @@ var Todo = new Schema({
 });
 console.log('mongoose setup Schema');
 
-
 mongoose.model('Todo',Todo);
-mongoose.connect(connectionString);
+mongoose.connect(connectionString,function(err){
+	if(err){
+		console.log('mongoose connection error');
+	}
+});
 console.log('mongoose setup model and connetion');
+
+
+
 
 
 	app.set('port',process.env.port || 1337);
@@ -44,11 +52,14 @@ console.log('mongoose setup model and connetion');
 
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
-		console.log("In /create, tel= ", req.query.phone);
+		console.log("In /create, phone= ", req.query.phone);
 		new Todo({
 			name	:req.query.name,
 			phone	:req.query.phone
-		}).save();
+		}).save(function(err,todo,count){
+			console.log(" create success!!");
+			res.redirect('/');
+		});
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
 
 	});
