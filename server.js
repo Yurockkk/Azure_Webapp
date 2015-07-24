@@ -14,15 +14,20 @@ console.log('mongoose setup connectionString');
 //var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
 //console.log('mongoose setup connectionString');
 
-var Schema = mongoose.Schema;
-
+var TodoSchema = mongoose.Schema({
+	name	   : String,
+    phone	   : String
+});
+/*
 var Todo = new Schema({
     name	   : String,
     phone	   : String
 });
+*/
 console.log('mongoose setup Schema');
 
-mongoose.model('Todo',Todo);
+mongoose.model('Todo',TodoSchema);
+
 mongoose.connect(connectionString,function(err){
 	if(err){
 		console.log('mongoose connection error');
