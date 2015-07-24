@@ -12,13 +12,14 @@ console.log('mongoose setup connectionString');
 //var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
 //console.log('mongoose setup connectionString');
 
-var TodoSchema = mongoose.Schema({
+var UserSchema = mongoose.Schema({
 	name	   : String,
-    phone	   : String
+    phone	   : String,
+    date	   : Date.now()
 });
 console.log('mongoose setup Schema');
 
-var User= mongoose.model('Todo',TodoSchema);
+var User= mongoose.model('users',UserSchema);
 
 mongoose.connect(connectionString,function(err){
 	if(err){
@@ -32,7 +33,7 @@ console.log('mongoose setup model and connetion');
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
-		 res.send("<a href='/User'>Show Users</a>");
+		 res.send("<a href='/users'>Show Users</a>");
 		//res.send('Hello World');
 		//console.log('In /');
 	});
@@ -50,16 +51,18 @@ console.log('mongoose setup model and connetion');
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
+		console.log("In /create, date= ", req.query.date);
 		var user = new User();
 		user.name=req.query.name;
 		user.phone=req.query.phone;
+		user.date = req.query.date;
 		user.save(function( err, user, count ){
     		res.redirect( '/' );
-			console.log(" create success!!");
+			console.log(" create success!! user= ",user.query.name);
 			//res.redirect('/');
 		});
 
-	app.get('/User',function(req,res){
+	app.get('/users',function(req,res){
 		User.find({},function(err,docs){
 			res.json(docs);
 		});
