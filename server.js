@@ -48,10 +48,7 @@ console.log('mongoose setup model and connetion');
 		new Todo({
 			name	:req.query.name,
 			phone	:req.query.phone
-		}).save(function(err,todo,count){
-			console.log(" create success!!");
-			//res.redirect('/');
-		});
+		}).save();
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
 
 	});
