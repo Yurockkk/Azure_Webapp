@@ -33,7 +33,6 @@ console.log('mongoose setup model and connetion');
 
 
 
-
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
 		res.send('Hello World');
@@ -50,7 +49,7 @@ console.log('mongoose setup model and connetion');
 		console.log('In /banana');
 	});
 
-	app.get('/create',function(req,res){
+	app.get('/create',function(req,res,next){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
 		new Todo({
