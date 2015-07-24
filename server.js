@@ -16,7 +16,7 @@ var Schema = mongoose.Schema;
 
 var Todo = new Schema({
     name	   : String,
-    tel		   : String
+    phone	   : String
 });
 console.log('mongoose setup Schema');
 
@@ -44,10 +44,10 @@ console.log('mongoose setup model and connetion');
 
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
-		console.log("In /create, tel= ", req.query.tel);
+		console.log("In /create, tel= ", req.query.phone);
 		new Todo({
 			name	:req.query.name,
-			tel		:req.query.tel
+			phone	:req.query.phone
 		}).save(function(err,todo,count){
 			console.log(" create success!!");
 			//res.redirect('/');
