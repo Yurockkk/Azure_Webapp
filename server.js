@@ -15,7 +15,6 @@ console.log('mongoose setup connectionString');
 var UserSchema = mongoose.Schema({
 	name	   : String,
     phone	   : String,
-    date	   : Date.now()
 });
 console.log('mongoose setup Schema');
 
@@ -51,11 +50,9 @@ console.log('mongoose setup model and connetion');
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
-		console.log("In /create, date= ", req.query.date);
 		var user = new User();
 		user.name=req.query.name;
 		user.phone=req.query.phone;
-		user.date = req.query.date;
 		user.save(function( err, user, count ){
     		res.redirect( '/' );
 			console.log(" create success!! user= ",user.query.name);
