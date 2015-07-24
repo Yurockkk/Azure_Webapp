@@ -13,18 +13,16 @@ console.log('mongoose setup connectionString');
 var Schema = mongoose.Schema;
 
 var Todo = new Schema({
-    user_id    : String,
-    content    : String,
-    updated_at : Date
+    name	   : String,
+    tel		   : int
 });
-
 console.log('mongoose setup Schema');
 
-/*
+
 mongoose.model('Todo',Todo);
 mongoose.connect(connectionString);
-console.log('mongoose setup');
-*/
+console.log('mongoose setup model and connetion');
+
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
