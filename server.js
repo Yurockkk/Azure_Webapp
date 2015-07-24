@@ -55,12 +55,13 @@ console.log('mongoose setup model and connetion');
 		new Todo({
 			name	:req.query.name,
 			phone	:req.query.phone
-		}).save(function(req,res){
+		}).save(function( err, todo, count ){
+    		todo.redirect( '/' );
 			console.log(" create success!!");
 			//res.redirect('/');
 		});
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
-		res.redirect('/');
+		//res.redirect('/');
 	});
 
 
