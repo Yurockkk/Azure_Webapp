@@ -33,6 +33,7 @@ console.log('mongoose setup model and connetion');
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
 		 res.send("<a href='/users'>Show Users</a>");
+		 console.log('In /');
 		//res.send('Hello World');
 		//console.log('In /');
 	});
@@ -55,7 +56,7 @@ console.log('mongoose setup model and connetion');
 		user.phone=req.query.phone;
 		user.save(function( err, user, count ){
     		res.redirect( '/' );
-			console.log(" create success!! user= ",user.query.name);
+			console.log(" create success!! user= ",req.query.name);
 			//res.redirect('/');
 		});
 
