@@ -49,15 +49,15 @@ console.log('mongoose setup model and connetion');
 		console.log('In /banana');
 	});
 
-	app.get('/create',function(req,res,next){
+	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
 		new Todo({
 			name	:req.query.name,
 			phone	:req.query.phone
-		}).save(function(err,todo,count){
+		}).save(function(req,res){
 			console.log(" create success!!");
-			res.redirect('/');
+			//res.redirect('/');
 		});
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
 
