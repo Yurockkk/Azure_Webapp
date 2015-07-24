@@ -32,8 +32,9 @@ console.log('mongoose setup model and connetion');
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
-		res.send('Hello World');
-		console.log('In /');
+		 res.send("<a href='/Todo'>Show Users</a>");
+		//res.send('Hello World');
+		//console.log('In /');
 	});
 
 	app.get('/login',function(req,res){
@@ -53,12 +54,12 @@ console.log('mongoose setup model and connetion');
 		user.name=req.query.name;
 		user.phone=req.query.phone;
 		user.save(function( err, todo, count ){
-    		todo.redirect( '/' );
+    		res.redirect( '/' );
 			console.log(" create success!!");
 			//res.redirect('/');
 		});
 
-	app.get('/yubo',function(req,res){
+	app.get('/Todo',function(req,res){
 		Todo.find({},function(err,docs){
 			res.json(docs);
 		});
