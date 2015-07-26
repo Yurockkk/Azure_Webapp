@@ -58,7 +58,7 @@ console.log('mongoose setup model and connetion');
 		});
 
 	app.get('/users',function(req,res){
-		User.find({},function(err,docs){
+		user.find({},function(err,docs){
 			res.json(docs);
 		});
 	});
@@ -66,7 +66,7 @@ console.log('mongoose setup model and connetion');
 	app.get('/users/:phone', function (req, res) {
     if (req.params.phone) {
     	console.log("In /users/:phone, phone="+req.params.phone);
-        User.find({ phone: req.params.email }, function (err, docs) {
+        user.find({ phone: req.params.email }, function (err, docs) {
             res.json(docs);
         });
     }
