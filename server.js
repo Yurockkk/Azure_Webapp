@@ -25,7 +25,7 @@ mongoose.connect(connectionString,function(err){
 console.log('mongoose setup model and connetion');
 
 
-
+var user = new User();
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
@@ -48,7 +48,7 @@ console.log('mongoose setup model and connetion');
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
-		var user = new User();
+		
 		user.name=req.query.name;
 		user.phone=req.query.phone;
 		user.save(function( err, user, count ){
