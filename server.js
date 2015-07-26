@@ -25,8 +25,8 @@ mongoose.connect(connectionString,function(err){
 console.log('mongoose setup model and connetion');
 
 
-var user = new User();
 
+var user = new User();
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
 		 res.send("<a href='/users'>Show Users</a>");
@@ -66,7 +66,7 @@ var user = new User();
 	app.get('/users/:phone', function (req, res) {
     if (req.params.phone) {
     	console.log("In /users/:phone, phone="+req.params.phone);
-        User.find({ phone: req.params.email }, function (err, docs) {
+        User.find({ phone: req.params.phone }, function (err, docs) {
             res.json(docs);
         });
     }
