@@ -9,9 +9,6 @@ var mongoose = require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 console.log('mongoose setup connectionString');
 
-//var connectionString = "mongodb://mabobo:JGvKqm8c.ZCdY8osNK83N2UfNH.R_ZLLwiKvcxFPv.U-@ds038888.mongolab.com:38888/mabobo"
-//console.log('mongoose setup connectionString');
-
 var UserSchema = mongoose.Schema({
 	name	   : String,
     phone	   : String,
@@ -27,8 +24,8 @@ mongoose.connect(connectionString,function(err){
 });
 console.log('mongoose setup model and connetion');
 
-	var user = new User();
-	
+
+
 
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
@@ -51,7 +48,7 @@ console.log('mongoose setup model and connetion');
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
-		//var user = new User();
+		var user = new User();
 		user.name=req.query.name;
 		user.phone=req.query.phone;
 		user.save(function( err, user, count ){
@@ -68,6 +65,7 @@ console.log('mongoose setup model and connetion');
 
 	app.get('/users/:phone', function (req, res) {
     if (req.params.phone) {
+    	console.log("In /users/:phone, phone="+req.params.phone);
         User.find({ phone: req.params.email }, function (err, docs) {
             res.json(docs);
         });
