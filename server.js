@@ -26,7 +26,7 @@ console.log('mongoose setup model and connetion');
 
 
 
-var user = new User();
+
 	app.set('port',process.env.port || 1337);
 	app.get('/',function(req,res){
 		 res.send("<a href='/users'>Show Users</a>");
@@ -48,7 +48,7 @@ var user = new User();
 	app.get('/create',function(req,res){
 		console.log("In /create, name= ", req.query.name);
 		console.log("In /create, phone= ", req.query.phone);
-		
+		var user = new User();
 		user.name=req.query.name;
 		user.phone=req.query.phone;
 		user.save(function( err, user, count ){
@@ -56,6 +56,7 @@ var user = new User();
 			console.log(" create success!! user= ",req.query.name);
 			//res.redirect('/');
 		});
+	});
 
 	app.get('/users',function(req,res){
 		User.find({},function(err,docs){
@@ -70,7 +71,7 @@ var user = new User();
             res.json(docs);
         });
     }
-});
+	});
 		/*
 		new Todo({
 			name	:req.query.name,
@@ -82,7 +83,7 @@ var user = new User();
 		});*/
 		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
 		//res.redirect('/');
-	});
+	
 
 
 	http.createServer(app).listen(app.get('port'),function(req,res){
