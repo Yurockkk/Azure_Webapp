@@ -10,69 +10,88 @@ var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 console.log('mongoose setup connectionString');
 
 var UserSchema = mongoose.Schema({
-	name	   : String,
-    phone	   : String,
+    name: String,
+    phone: String,
 });
 console.log('mongoose setup Schema');
 
-var User= mongoose.model('users',UserSchema);
+var User = mongoose.model('users', UserSchema);
 
-mongoose.connect(connectionString,function(err){
-	if(err){
-		console.log('mongoose connection error');
-	}
+mongoose.connect(connectionString, function(err) {
+    if (err) {
+        console.log('mongoose connection error');
+    }
 });
 console.log('mongoose setup model and connetion');
 
 
 
 
-	app.set('port',process.env.port || 1337);
-	app.get('/',function(req,res){
-		 res.send("<a href='/users'>Show Users</a>");
-		 console.log('In /');
-		//res.send('Hello World');
-		//console.log('In /');
-	});
+app.set('port', process.env.port || 1337);
+app.get('/', function(req, res) {
+    res.send("<a href='/users'>Show Users</a>");
+    console.log('In /');
+    //res.send('Hello World');
+    //console.log('In /');
+});
 
-	app.get('/login',function(req,res){
-		res.send('Hello Gunger');
-		console.log('In /login');
-	});
+app.get('/login', function(req, res) {
+    res.send('Hello Gunger');
+    console.log('In /login');
+});
 
-	app.get('/banana',function(req,res){
-		res.sendfile('testtest.html');
-		console.log('In /banana');
-	});
 
-	app.get('/create',function(req,res){
-		console.log("In /create, name= ", req.query.name);
-		console.log("In /create, phone= ", req.query.phone);
-		var user = new User();
-		user.name=req.query.name;
-		user.phone=req.query.phone;
-		user.save(function( err, user, count ){
-    		res.redirect( '/' );
-			console.log(" create success!! user= ",req.query.name);
-			//res.redirect('/');
-		});
-	});
+app.get('/banana', function(req, res) {
+    res.sendfile('testtest.html');
+    console.log('In /banana');
+});
 
-	app.get('/users',function(req,res){
-		User.find({},function(err,docs){
-			res.json(docs);
-		});
-	});
 
-	app.get('/users/:phone', function (req, res) {
+
+app.get('/create', function(req, res) {
+    console.log("In /create, name= ", req.query.name);
+    console.log("In /create, phone= ", req.query.phone);
+    var user = new User();
+    user.name = req.query.name;
+    user.phone = req.query.phone;
+    user.save(function(err, user, count) {
+        res.redirect('/');
+        console.log(" create success!! user= ", req.query.name);
+        //res.redirect('/');
+    });
+});
+
+
+app.get('/users', function(req, res) {
+    User.find({}, function(err, docs) {
+        res.json(docs);
+    });
+});
+
+app.get('/users/:phone', function(req, res) {
     if (req.params.phone) {
-    	console.log("In /users/:phone, phone="+req.params.phone);
-        User.find({ phone: req.params.phone }, function (err, docs) {
+        console.log("In /users/:phone, phone=" + req.params.phone);
+        User.find({
+            phone: req.params.phone
+        }, {_id: 0, phone: 0});
+    }
+});
+
+/*
+app.get('/users/:phone', function(req, res) {
+    if (req.params.phone) {
+        console.log("In /users/:phone, phone=" + req.params.phone);
+        User.find({
+            phone: req.params.phone
+        }, function(err, docs) {
             res.json(docs);
         });
     }
-	});
-		/*
+});
+
+*/
+
+/*
 		new Todo({
 			name	:req.query.name,
 			phone	:req.query.phone
@@ -81,14 +100,16 @@ console.log('mongoose setup model and connetion');
 			console.log(" create success!!");
 			//res.redirect('/');
 		});*/
-		//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
-		//res.redirect('/');
-	
+//res.send('name='+ req.query.name+'.\n'+ 'tel= '+ req.query.tel );
+//res.redirect('/');
 
 
-	http.createServer(app).listen(app.get('port'),function(req,res){
-		console.log("express server listen to "+ app.get('port'));
-	});
+
+http.createServer(app).listen(app.get('port'), function(req, res) {
+    console.log("express server listen to " + app.get('port'));
+});
+
+
 
 
 
