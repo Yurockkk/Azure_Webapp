@@ -83,9 +83,10 @@ app.get('/users/:phone', function(req, res) {
         console.log("In /users/:phone, phone=" + req.params.phone);
         User.find({
             phone: req.params.phone
-        }, function(err, docs) {
+        }, "-_id phone"
+        ,function(err, docs) {
             res.json(docs);
-        }).select("name");
+        });
     }
 });
 
