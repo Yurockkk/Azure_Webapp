@@ -63,6 +63,7 @@ app.get('/create', function(req, res) {
 
 
 app.get('/users', function(req, res) {
+	console.log("In /users");
     User.find({}, function(err, docs) {
         res.json(docs);
     });
@@ -85,7 +86,10 @@ app.get('/users/:phone', function(req, res) {
             phone: req.params.phone
         }, "-_id name"
         ,function(err, docs) {
-        	if(err){res.send("someting wrong")}
+        	if(err){
+        		res.send("someting wrong");
+        		console.log("find data error");
+        	}
             res.json(docs);
         });
     }
