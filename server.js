@@ -67,7 +67,7 @@ app.get('/users', function(req, res) {
         res.json(docs);
     });
 });
-
+/*
 app.get('/users/:phone', function(req, res) {
     if (req.params.phone) {
         console.log("In /users/:phone, phone=" + req.params.phone);
@@ -76,8 +76,8 @@ app.get('/users/:phone', function(req, res) {
         }, {_id: 0, phone: 0});
     }
 });
+*/
 
-/*
 app.get('/users/:phone', function(req, res) {
     if (req.params.phone) {
         console.log("In /users/:phone, phone=" + req.params.phone);
@@ -85,11 +85,11 @@ app.get('/users/:phone', function(req, res) {
             phone: req.params.phone
         }, function(err, docs) {
             res.json(docs);
-        });
+        }).select("name");
     }
 });
 
-*/
+
 
 /*
 		new Todo({
