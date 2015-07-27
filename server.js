@@ -85,6 +85,7 @@ app.get('/users/:phone', function(req, res) {
             phone: req.params.phone
         }, "-_id name"
         ,function(err, docs) {
+        	if(err){res.send("someting wrong")}
             res.json(docs);
         });
     }
