@@ -76,6 +76,6 @@ http.createServer(app).listen(app.get('port'), function(req, res) {
     console.log("express server listen to " + app.get('port'));
 });
 */
-app.listen(app.get('port')); // Listen on port 3000
+app.listen(3000); // Listen on port 3000
 //module.exports = app;
 //module.exports = app;
