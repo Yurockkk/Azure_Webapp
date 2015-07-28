@@ -3,7 +3,6 @@ var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
 console.log("In app.js");
 
-var http = require('http');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -18,7 +17,7 @@ var app = express();
 
 //port setup
 //app.set('port', process.env.port || 1337);
-console.log('port');
+//console.log('port');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 console.log('views');
@@ -33,6 +32,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', taskList.showTasks.bind(taskList));
+
+//try bootstrap
+app.get('/banana',function(req,res){
+  res.sendfile('banana.html');
+  console.log('In /banana');
+});
 /*
 app.get('/', function(req,res){
 
