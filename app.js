@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.get('/', taskList.showTasks.bind(taskList));
 app.get('/', function(req,res){
+
   res.send('hello,gunger');
 });
 app.post('/addtask', taskList.addTask.bind(taskList));
@@ -68,9 +69,11 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+/*
 http.createServer(app).listen(app.get('port'), function(req, res) {
     console.log("express server listen to " + app.get('port'));
 });
-
+*/
+app.listen(app.get('port')); // Listen on port 3000
 module.exports = app;
+//module.exports = app;
