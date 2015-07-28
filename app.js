@@ -77,5 +77,5 @@ http.createServer(app).listen(app.get('port'), function(req, res) {
 });
 */
 app.listen(3000); // Listen on port 3000
-//module.exports = app;
+module.exports = app;
 //module.exports = app;
