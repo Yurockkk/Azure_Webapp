@@ -17,7 +17,7 @@ var users = require('./routes/users');
 var app = express();
 
 //port setup
-app.set('port', process.env.port || 1337);
+//app.set('port', process.env.port || 1337);
 console.log('port');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
