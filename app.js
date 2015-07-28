@@ -35,7 +35,7 @@ app.get('/', taskList.showTasks.bind(taskList));
 
 //try bootstrap
 app.get('/banana',function(req,res){
-  res.sendfile('banana.html');
+  res.sendfile('banana.jade');
   console.log('In /banana');
 });
 /*
