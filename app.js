@@ -18,10 +18,12 @@ var app = express();
 
 //port setup
 app.set('port', process.env.port || 1337);
+console.log('port');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+console.log('views');
 app.set('view engine', 'jade');
-
+console.log('view engine');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
