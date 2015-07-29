@@ -12,7 +12,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+//add hello.js
+//var hello = require('./routes/hello');
+//add banana routing
+var banana= require('./routes/banana');
 var app = express();
 
 //port setup
@@ -33,19 +36,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', taskList.showTasks.bind(taskList));
 
-//try bootstrap
-app.get('/banana',function(req,res){
-  res.sendfile('banana.jade');
-  console.log('In /banana');
-});
-/*
-app.get('/', function(req,res){
 
-  res.send('hello,gunger');
-});
-*/
+//add banana routing
+app.get('/banana',banana);
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
+//add hello routing
+app.get('/hello',hello.)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
