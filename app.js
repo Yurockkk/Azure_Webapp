@@ -34,15 +34,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//routing 
 app.get('/', taskList.showTasks.bind(taskList));
-
-
 //add banana routing
 app.get('/banana',banana);
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
-//add hello routing
-app.get('/hello',hello.)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
