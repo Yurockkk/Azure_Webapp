@@ -19,7 +19,8 @@ var banana= require('./routes/banana');
 var app = express();
 
 //add log in middleware
-routes.use(function(req,res,next){
+router=new routes();
+router.use(function(req,res,next){
   console.log(req.method, req.url);
 
   next();
