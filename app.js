@@ -1,8 +1,8 @@
 var TaskList = require('./routes/tasklist');
 var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
-var mongoose = require('mongoose'),
-  task = require('./models/task.js');
+//var mongoose = require('mongoose'),
+  //task = require('./models/task.js');
 
 console.log("In app.js");
 
@@ -18,7 +18,7 @@ var users = require('./routes/users');
 
 //add banana routing
 var banana= require('./routes/banana');
-//var extract=require('./routes/extract');
+var extract= require('./routes/extract');
 var app = express();
 
 
@@ -43,13 +43,15 @@ app.get('/', taskList.showTasks.bind(taskList));
 //add banana routing
 app.get('/banana',banana);
 //add extract item by category 7/30
+app.get('extract',extract);
+/*
 app.get('/extract', function(req, res) {
   console.log("In /extract");
     task.find({}, function(err, docs) {
         res.json(docs);
     });
 });
-//app.get('/extract/:itemCategory',function)
+*/
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
