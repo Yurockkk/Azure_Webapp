@@ -1,6 +1,9 @@
 var TaskList = require('./routes/tasklist');
 var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
+var mongoose = require('mongoose'),
+  task = require('../models/task.js');
+
 console.log("In app.js");
 
 var express = require('express');
@@ -42,7 +45,7 @@ app.get('/banana',banana);
 //add extract item by category 7/30
 app.get('/extract', function(req, res) {
   console.log("In /extract");
-    taskList.find({}, function(err, docs) {
+    task.find({}, function(err, docs) {
         res.json(docs);
     });
 });
