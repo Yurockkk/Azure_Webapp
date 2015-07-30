@@ -2,7 +2,7 @@ var TaskList = require('./routes/tasklist');
 var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
 var mongoose = require('mongoose'),
-  task = require('../models/task.js');
+  task = require('./models/task.js');
 
 console.log("In app.js");
 
