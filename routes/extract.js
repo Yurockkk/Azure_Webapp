@@ -1,10 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+var mongoose = require('mongoose'),
+  task = require('../models/task.js');
+
 
 router.get('/extract', function(req, res, next) {
 	console.log("In routes.extract");
-  res.send('extractttt');
+  	task.find({},function(err,docs){
+  		res.json(docs);
+  	});
 });
 
 
