@@ -39,7 +39,7 @@ app.get('/', taskList.showTasks.bind(taskList));
 //add banana routing
 app.get('/banana',banana);
 //add extract item by category 7/30
-//app.get('/extract/:itemCategory',extract);
+app.get('/extract',extract);
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
