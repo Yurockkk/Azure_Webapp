@@ -2,10 +2,14 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose'),
   task = require('../models/task.js');
-  
+
 console.log("In routes.extract");
 /* GET extract page. */
-router.get('/extract/:itemCategory', function(req, res, next) {
+router.get('/extract',function(req,res){
+	console.log("In routes.extract");
+	res.send('請輸入想搜尋類別');
+})
+router.get('/extract/:itemCategory', function(req, res) {
 	console.log("In routes.extract: itemCategory="+ req.params.itemCategory);
 	task.find({
 		itemCategory: req.params.itemCategory
