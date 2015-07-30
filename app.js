@@ -12,19 +12,11 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-//add hello.js
-//var hello = require('./routes/hello');
+
 //add banana routing
 var banana= require('./routes/banana');
 var app = express();
 
-//add log in middleware
-router=new routes();
-router.use(function(req,res,next){
-  console.log(req.method, req.url);
-
-  next();
-});
 
 //port setup
 //app.set('port', process.env.port || 1337);
@@ -82,12 +74,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-/*
-http.createServer(app).listen(app.get('port'), function(req, res) {
-    console.log("express server listen to " + app.get('port'));
-});
-*/
 app.listen(3000); // Listen on port 3000
 module.exports = app;
 //module.exports = app;
