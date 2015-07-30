@@ -14,8 +14,8 @@ router.get('/extract', function(req, res, next) {
 
 router.get('/extract/:itemCategory', function(req, res, next) {
 	console.log("In routes.extract");
-	if(req.parms.itemCategory){
-		task.find({itemCategory: req.parms.itemCategory},function(err,docs){
+	if(req.params.itemCategory){
+		task.find({itemCategory: req.params.itemCategory},function(err,docs){
   		res.json(docs);
   		});
 	}
