@@ -15,7 +15,7 @@ var users = require('./routes/users');
 
 //add banana routing
 var banana= require('./routes/banana');
-// extract=require('./routes/extract');
+var extract=require('./routes/extract');
 var app = express();
 
 
@@ -40,7 +40,7 @@ app.get('/', taskList.showTasks.bind(taskList));
 //add banana routing
 app.get('/banana',banana);
 //add extract item by category 7/30
-//app.get('/extract',extract);
+app.get('/extract',extract);
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
