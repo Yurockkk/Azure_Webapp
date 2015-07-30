@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var task = require('../models/task.js');
-
+var mongoose = require('mongoose'),
+  task = require('../models/task.js');
+  
 console.log("In routes.extract");
 /* GET extract page. */
 router.get('/extract/:itemCategory', function(req, res, next) {
