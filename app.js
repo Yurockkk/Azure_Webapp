@@ -40,7 +40,13 @@ app.get('/', taskList.showTasks.bind(taskList));
 //add banana routing
 app.get('/banana',banana);
 //add extract item by category 7/30
-app.get('/extract',extract);
+app.get('/extract', function(req, res) {
+  console.log("In /extract");
+    taskList.find({}, function(err, docs) {
+        res.json(docs);
+    });
+});
+//app.get('/extract/:itemCategory',function)
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
