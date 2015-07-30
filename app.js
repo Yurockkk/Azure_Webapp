@@ -18,6 +18,13 @@ var users = require('./routes/users');
 var banana= require('./routes/banana');
 var app = express();
 
+//add log in middleware
+routes.use(function(req,res,next){
+  console.log(req.method, req.url);
+
+  next();
+});
+
 //port setup
 //app.set('port', process.env.port || 1337);
 //console.log('port');
@@ -38,6 +45,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', taskList.showTasks.bind(taskList));
 //add banana routing
 app.get('/banana',banana);
+//add extract item by category 7/30
+app.get('/extract/:itemCategory',extract);
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
@@ -71,6 +80,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 /*
 http.createServer(app).listen(app.get('port'), function(req, res) {
