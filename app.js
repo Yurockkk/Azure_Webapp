@@ -19,7 +19,6 @@ var users = require('./routes/users');
 //add banana routing
 var banana= require('./routes/banana');
 var extract= require('./routes/extract');
-console.log("require extract");
 
 var app = express();
 

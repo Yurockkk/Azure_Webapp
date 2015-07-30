@@ -1,11 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
+
+router.get('/extract', function(req, res, next) {
+	console.log("In routes.extract");
+  res.send('extractttt');
+});
+
+
+
+/*
 var mongoose = require('mongoose'),
   task = require('../models/task.js');
 
 console.log("In routes.extract");
-/* GET extract page. */
+// GET extract page. 
 router.get('/extract',function(req,res){
 	console.log("In routes.extract");
 	res.send('請輸入想搜尋類別');
@@ -24,5 +33,8 @@ router.get('/extract/:itemCategory', function(req, res) {
   //res.render('extract', { title: 'about banana' });
 
 });
+
+*/
+
 
 module.exports = router;
