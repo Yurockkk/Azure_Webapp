@@ -4,15 +4,15 @@ var router = express.Router();
 var mongoose = require('mongoose'),
   task = require('../models/task.js');
 
-/*
-router.get('/extract', function(req, res, next) {
+
+router.get('/', function(req, res, next) {
 	console.log("In routes.extract");
   	task.find({},function(err,docs){
   		res.json(docs);
   	});
 });
-*/
-router.get('/extract/:itemCategory', function(req, res, next) {
+
+router.get('/:itemCategory', function(req, res, next) {
 	console.log("In /extract/:itemCategory"+req.params.itemCategory);
 	if(req.params.itemCategory){
 		task.find({itemCategory: req.params.itemCategory},function(err,docs){
