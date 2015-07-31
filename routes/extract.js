@@ -25,6 +25,7 @@ router.get('/:itemCategory', function(req, res, next) {
 		task.find({itemCompleted: req.params.itemCompleted},function(err,docs){
   		res.json(docs);
   		});
+  	}
   	
 });
 
