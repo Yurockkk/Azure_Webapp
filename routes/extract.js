@@ -11,7 +11,7 @@ router.get('/extract', function(req, res, next) {
   		res.json(docs);
   	});
 });
-
+/*
 router.get('/extract/:itemCategory', function(req, res, next) {
 	console.log("In /extract/:itemCategory"+req.params.itemCategory);
 	if(req.params.itemCategory){
@@ -21,8 +21,16 @@ router.get('/extract/:itemCategory', function(req, res, next) {
 	}
   	
 });
+*/
+router.route('/extract/:itemCategory')
+		.get(function(req.res){
+			if(req.params.itemCategory){
+				task.find({itemCategory: req.params.itemCategory},function(err,docs){
+					res.json(docs);
+				});
 
-
+			}
+		});
 
 /*
 var mongoose = require('mongoose'),
