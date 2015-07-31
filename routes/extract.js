@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 
 router.get('/', function(req, res, next) {
-	console.log("In routes.extract");
+	console.log("In /extract");
   	task.find({},function(err,docs){
   		res.json(docs);
   	});
