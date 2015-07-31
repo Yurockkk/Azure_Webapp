@@ -13,12 +13,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:itemCategory', function(req, res, next) {
-	console.log("In /extract/:itemCategory"+req.params.itemCategory);
+	console.log("In /extract/:itemCategory= "+req.params.itemCategory);
+	console.log(" "+req.params.itemCategory);
 	if(req.params.itemCategory){
 		task.find({itemCategory: req.params.itemCategory},function(err,docs){
   		res.json(docs);
   		});
 	}
+
+	if(req.params.itemCompleted){
+		task.find({itemCompleted: req.params.itemCompleted},function(err,docs){
+  		res.json(docs);
+  		});
   	
 });
 
