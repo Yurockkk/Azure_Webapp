@@ -54,8 +54,9 @@ app.get('/push',function(req,res){
       msg: 'Hello!'
     }
   };
-
-  notificationHubService.gcm.send(null,payload,function(err){
+  
+  console.log('data setting');
+  notificationHubService.baidu.send(null,payload,function(err){
     if(!err){
       console.log('In notificationHubService.gcm.send:', 'sending message success');
 
