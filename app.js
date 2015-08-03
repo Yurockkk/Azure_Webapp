@@ -48,15 +48,17 @@ app.get('/banana',banana);
 //add baidu push
 app.get('/push',function(req,res){
   console.log('In /push');
+/*
   var payload = {
 
     data: {
       msg: 'Hello!'
     }
   };
-  
+  */
+  var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
   console.log('data setting');
-  notificationHubService.baidu.send(null,payload,function(err){
+  notificationHubService.wns.send(null,payload,'wns/toast',function(err){
     if(!err){
       console.log('In notificationHubService.gcm.send:', 'sending message success');
 
