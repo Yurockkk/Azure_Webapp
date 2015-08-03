@@ -3,7 +3,7 @@ var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
 //add push-notification to azure(via baidu)
 var azure = require('azure');
-var notificationHubService = azure.createNotificationHubService('baidu-push','Endpoint=sb://baidu-push-ns.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=mU/dFAXWg38lsvNfoLYwbi9eUx7s/8SjIdF3JhzXKvQ=');
+var notificationHubService = azure.createNotificationHubService('baidu-push','Endpoint=sb://baidu-push-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Cz4Z5Ns2Ly0LpAdIumwgtgAwaUf79f/12qOVrZ4/ORQ=');
 console.log('setup azure');
 console.log("In app.js");
 
