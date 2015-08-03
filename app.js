@@ -1,9 +1,10 @@
 var TaskList = require('./routes/tasklist');
 var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
-//var mongoose = require('mongoose'),
-  //task = require('./models/task.js');
-
+//add push-notification to azure(via baidu)
+var azure = require('azure');
+var notificationHubService = azure.createNotificationHubService('baidu-push','Endpoint=sb://baidu-push-ns.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=mU/dFAXWg38lsvNfoLYwbi9eUx7s/8SjIdF3JhzXKvQ=');
+console.log('setup azure');
 console.log("In app.js");
 
 var express = require('express');
@@ -43,17 +44,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', taskList.showTasks.bind(taskList));
 //add banana routing
 app.get('/banana',banana);
-//add extract item by category 7/30
-//app.get('/extract',extract);
-app.use('/extract',extract);
-/*
-app.get('/extract', function(req, res) {
-  console.log("In /extract");
-    task.find({}, function(err, docs) {
-        res.json(docs);
-    });
+
+//add baidu push
+app.get('/push',function(req,res){
+  console.log('In /push');
+  var payload = {
+
+    data: {
+      msg: 'Hello!'
+    }
+  };
+
+  notificationHubService.gcm.send(null,payload,function(err){
+    if(!err){
+      console.log('In notificationHubService.gcm.send:', 'sending message success');
+
+    }
+  });
+
 });
-*/
+//add extract item by category 7/30
+app.use('/extract',extract);
+
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
