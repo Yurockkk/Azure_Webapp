@@ -56,7 +56,7 @@ app.get('/push',function(req,res){
   };
   console.log('data setting');
 
-  notificationHubService.gcm.send(null, payload, function(error){
+  notificationHubService.send(null, payload, function(error){
     if(!error){
       //notification sent
       console.log('sending success!');
