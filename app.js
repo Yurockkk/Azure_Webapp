@@ -1,9 +1,24 @@
 var TaskList = require('./routes/tasklist');
 var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
+/*
 //add push-notification to azure(via baidu)
 var azure = require('azure');
 var notificationHubService = azure.createNotificationHubService('baidu-push-ns','Endpoint=sb://baidu-push-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Cz4Z5Ns2Ly0LpAdIumwgtgAwaUf79f/12qOVrZ4/ORQ=');
+*/
+
+var Push   = require('baidu-push');
+var userId = '984042635465895574';
+
+var pushOption = {
+  apiKey: 'ztuEYAE5rQG4df1MwS9jtnfT',
+  secretKey: 'fNtMXArMj0eBdA7T4DmXIUWhaTuyYOG2',
+  // timeout: 2000, // optional - default is: 5000
+  // agent: false   // optional - default is: maxSockets = 20
+};
+
+var client = Push.createClient(pushOption);
+
 console.log('setup azure');
 console.log("In app.js");
 
@@ -48,20 +63,15 @@ app.get('/banana',banana);
 //add baidu push
 app.get('/push',function(req,res){
   console.log('In /push');
-  var payload = {
-
-    data: {
-      msg: 'Hello!'
-    }
+  
+  var option = {
+    push_type: 1,
+    user_id: userId,
+    messages: ["hello"],
+    msg_keys: ["title"]
   };
   console.log('data setting');
-
-  notificationHubService.gcm.send(null, payload, function(error){
-    if(!error){
-      //notification sent
-      console.log('sending success!');
-    }
-  });
+  client.pushMsg(option, function(error, result) {});
 
 });
 //add extract item by category 7/30
