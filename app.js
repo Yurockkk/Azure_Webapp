@@ -68,6 +68,7 @@ app.get('/push',function(req,res){
   console.log('In /push');
   res.send('In push');
   var option = {
+    /*
     messages_type: 1,
     push_type: 1,
     user_id: userId,
@@ -89,6 +90,15 @@ app.get('/push',function(req,res){
     }],
     msg_keys: [""]
   };
+  */
+
+  var option = {
+    push_type: 1,
+    user_id: userId,
+    messages: ["hello"],
+    msg_keys: ["title"]
+  };
+
   console.log('data setting');
   var runtime =10; 
   var counter = 0;
