@@ -83,7 +83,12 @@ app.get('/push',function(req,res){
     msg_keys: ["title"]
   };
   console.log('data setting');
-  client.pushMsg(option, function(error, result) {});
+  client.pushMsg(option, function(error, result) {
+    if(!error){
+      console.log('push success');
+    }
+  });
+  res.redirect('/');
 
 });
 //add extract item by category 7/30
