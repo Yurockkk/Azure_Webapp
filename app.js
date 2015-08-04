@@ -66,7 +66,7 @@ app.get('/try',function(req,res){
 //add baidu push
 app.get('/push',function(req,res){
   console.log('In /push');
-  
+  res.send('In push');
   var option = {
     messages_type: 1,
     push_type: 3,
