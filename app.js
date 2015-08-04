@@ -104,6 +104,7 @@ app.get('/push',function(req,res){
          console.log('setInterval,counter= '+ counter);
 
          if(counter >= 10){
+          counter=0;
           console.log('clearInterval');
           clearInterval(timmer);
           }
