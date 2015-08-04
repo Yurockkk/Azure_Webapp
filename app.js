@@ -102,8 +102,9 @@ app.get('/push',function(req,res){
     push_type: 1,
     user_id: userId,
     messages: ["hello"],
-    msg_keys: [counter]
+    msg_keys: []
      };
+     option.msg_keys.push(counter+"abcdefghijk");
      console.log(option.msg_keys);
     client.pushMsg(option,function(err,result){
       counter++;
