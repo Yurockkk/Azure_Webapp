@@ -88,7 +88,17 @@ app.get('/push',function(req,res){
   console.log('data setting');
   var runtime =10; 
   var counter = 0;
- 
+/*
+  function interval(){
+    counter++;
+    console.log('setInterval, counter= '+counter);
+
+    if(counter >= 10){
+        console.log('clearInterval! counter='+counter);
+        clearInterval(timmer);
+      }
+  }
+ */
   var timmer= setInterval(function(){
     /*
     client.pushMsg(option,function(err,result){
@@ -102,6 +112,11 @@ app.get('/push',function(req,res){
     */
     counter++;
     console.log('setInterval, counter= '+counter);
+    if(counter >== 10){
+      counter=0;
+      console.log('clearInterval! counter='+counter);
+      clearInterval(timmer);
+    }
   },10000);
 
 });
