@@ -96,7 +96,7 @@ app.get('/push',function(req,res){
 
   console.log('data setting');
   var runtime =10; 
-  var counter = 1;
+  var counter = 0;
   var timmer= setInterval(function(){
     var option = {
     push_type: 1,
@@ -104,7 +104,7 @@ app.get('/push',function(req,res){
     messages: [],
     msg_keys: []
      };
-     option.messages.push(counter);
+     option.messages.push(counter+"count");
      option.msg_keys.push(counter+"abcdefghijk");
      console.log(option.msg_keys);
     client.pushMsg(option,function(err,result){
@@ -112,11 +112,11 @@ app.get('/push',function(req,res){
       console.log('setInterval, counter= '+counter);
       if(counter >= 10){
         console.log('clearInterval! counter='+counter);
-        counter=1;
+        counter=0;
         clearInterval(timmer);
       }
     });
-  },5000);
+  },10000);
 
 });
 //add extract item by category 7/30
