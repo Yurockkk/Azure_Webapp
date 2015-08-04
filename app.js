@@ -96,14 +96,15 @@ app.get('/push',function(req,res){
 
   console.log('data setting');
   var runtime =10; 
-  var counter = 0;
+  var counter = 1;
   var timmer= setInterval(function(){
     var option = {
     push_type: 1,
     user_id: userId,
-    messages: ["hello"],
+    messages: [],
     msg_keys: []
      };
+     option.messages.push(counter);
      option.msg_keys.push(counter+"abcdefghijk");
      console.log(option.msg_keys);
     client.pushMsg(option,function(err,result){
@@ -111,10 +112,11 @@ app.get('/push',function(req,res){
       console.log('setInterval, counter= '+counter);
       if(counter >= 10){
         console.log('clearInterval! counter='+counter);
+        counter=1;
         clearInterval(timmer);
       }
     });
-  },30000);
+  },5000);
 
 });
 //add extract item by category 7/30
