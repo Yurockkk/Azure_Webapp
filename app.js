@@ -110,7 +110,7 @@ app.get('/push',function(req,res){
         }
       });
 
-  },30000);
+  },1000);
 
   
   res.redirect('/');
