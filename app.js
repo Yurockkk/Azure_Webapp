@@ -69,7 +69,7 @@ app.get('/push',function(req,res){
   
   var option = {
     messages_type: 1,
-    push_type: 1,
+    push_type: 3,
     user_id: userId,
     messages: [{
 
@@ -78,9 +78,9 @@ app.get('/push',function(req,res){
       "description": "hello world",
       //android特有字段，可选 
       "notification_builder_id": 0,
-      "notification_basic_style": 7,
+      "notification_basic_style": 4,
       "open_type":1,
-      "user_confirm": 0,
+      "user_confirm": 1,
       "url": "http://developer.baidu.com"
     }],
     msg_keys: ["title"]
