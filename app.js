@@ -116,7 +116,7 @@ app.get('/push',function(req,res){
         clearInterval(timmer);
       }
     });
-  },10000);
+  },30000);
 
 });
 //add extract item by category 7/30
