@@ -104,7 +104,7 @@ app.get('/push',function(req,res){
     messages: [],
     msg_keys: []
      };
-     option.messages.push(counter+"count");
+     option.messages.push((counter+1)+" count");
      option.msg_keys.push(counter+"abcdefghijk");
      console.log(option.msg_keys);
     client.pushMsg(option,function(err,result){
