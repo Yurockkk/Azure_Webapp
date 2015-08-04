@@ -98,20 +98,22 @@ app.get('/push',function(req,res){
   }
 */
   var timmer= setInterval(function(){
-    client.pushMsg(option, function(error, result){});
-    counter++;
-    console.log('setInterval,counter= '+ counter);
-    if(counter >= 10){
-      console.log('clearInterval');
-      clearInterval(timmer);
-    }
+    client.pushMsg(option, function(error, result){
+      if(!error){
+         counter++;
+         console.log('setInterval,counter= '+ counter);
+
+         if(counter >= 10){
+          console.log('clearInterval');
+          clearInterval(timmer);
+          }
+        }
+      });
+
   },30000);
 
   
   res.redirect('/');
-
-
-
 });
 //add extract item by category 7/30
 app.use('/extract',extract);
