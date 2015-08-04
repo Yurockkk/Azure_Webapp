@@ -59,6 +59,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', taskList.showTasks.bind(taskList));
 //add banana routing
 app.get('/banana',banana);
+app.get('/try',function(req,res){
+  res.send('Hello,gunger');
+});
 
 //add baidu push
 app.get('/push',function(req,res){
