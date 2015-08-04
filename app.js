@@ -83,13 +83,33 @@ app.get('/push',function(req,res){
     msg_keys: ["title"]
   };
   console.log('data setting');
-  client.pushMsg(option, function(error, result) {
-    console.log(error);
-    if(!error){
-      console.log('push success');
+  var runtime =10; 
+  var counter = 0;
+  /*
+  for(var i=0, i<runtime,++i){
+
+    client.pushMsg(option, function(error, result) {
+      counter++;
+      console.log('counter='+ counter);
+  //    if(!error){
+  //      console.log('push success');
+  //    }
+    });
+  }
+*/
+  var timmer= setInterval(function(){
+    counter++;
+    console.log('setInterval,counter= '+ counter);
+    if(counter >= 10){
+      console.log('clearInterval');
+      clearInterval(timmer);
     }
-  });
+  },1000);
+
+  
   res.redirect('/');
+
+
 
 });
 //add extract item by category 7/30
