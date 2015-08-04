@@ -85,18 +85,7 @@ app.get('/push',function(req,res){
   console.log('data setting');
   var runtime =10; 
   var counter = 0;
-  /*
-  for(var i=0, i<runtime,++i){
-
-    client.pushMsg(option, function(error, result) {
-      counter++;
-      console.log('counter='+ counter);
-  //    if(!error){
-  //      console.log('push success');
-  //    }
-    });
-  }
-*/
+ 
   var timmer= setInterval(function(){
     client.pushMsg(option,function(err,result){
       counter++;
@@ -108,8 +97,6 @@ app.get('/push',function(req,res){
     });
   },30000);
 
-  
-  res.redirect('/');
 });
 //add extract item by category 7/30
 app.use('/extract',extract);
