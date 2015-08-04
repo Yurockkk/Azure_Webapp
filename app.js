@@ -105,7 +105,7 @@ app.get('/push',function(req,res){
       console.log('clearInterval');
       clearInterval(timmer);
     }
-  },3000);
+  },5000);
 
   
   res.redirect('/');
