@@ -98,19 +98,14 @@ app.get('/push',function(req,res){
   }
 */
   var timmer= setInterval(function(){
-    client.pushMsg(option, function(error, result){
-      if(!error){
-         counter++;
-         console.log('setInterval,counter= '+ counter);
-
-         if(counter >= 10){
-          counter=0;
-          console.log('clearInterval');
-          clearInterval(timmer);
-          }
-        
-      });
-    }
+    client.pushMsg(option,function(err,result){
+      counter++;
+      console.log('setInterval, counter= '+counter);
+      if(counter >= 10){
+        console.log('clearInterval! counter='+counter);
+        clearInterval(timmer);
+      }
+    });
   },1000);
 
   
