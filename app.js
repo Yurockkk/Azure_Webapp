@@ -72,7 +72,7 @@ app.get('/push',function(req,res){
 
       //android必选，ios可选
       "title" : "hello" ,   
-      "description": "hello world"
+      "description": "hello world",
 
       //android特有字段，可选 
       "notification_builder_id": 0,
