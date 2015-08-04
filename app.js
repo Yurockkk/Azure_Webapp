@@ -92,18 +92,19 @@ app.get('/push',function(req,res){
   };
   */
 
-  var option = {
-    push_type: 1,
-    user_id: userId,
-    messages: ["hello"],
-    msg_keys: ["title"]
-  };
+  
 
   console.log('data setting');
   var runtime =10; 
   var counter = 0;
   var timmer= setInterval(function(){
-    
+    var option = {
+    push_type: 1,
+    user_id: userId,
+    messages: ["hello"],
+    msg_keys: [counter]
+     };
+     console.log(option.msg_keys);
     client.pushMsg(option,function(err,result){
       counter++;
       console.log('setInterval, counter= '+counter);
