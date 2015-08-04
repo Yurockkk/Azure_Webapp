@@ -73,24 +73,13 @@ app.get('/push',function(req,res){
       //android必选，ios可选
       "title" : "hello" ,   
       "description": "hello world",
-
       //android特有字段，可选 
       "notification_builder_id": 0,
       "notification_basic_style": 7,
-      "open_type":0,
-      "net_support" : 1,
+      "open_type":1,
       "user_confirm": 0,
-      "url": "http://developer.baidu.com",
-      "pkg_content":"",
-      "pkg_name" : "com.baidu.bccsclient",
-      "pkg_version":"0.1",
-
-      //android自定义字段
-      "custom_content": {
-        "Google":"https://www.google.com.tw/?gws_rd=ssl", 
-        "key2":"value2"
-        }
-  }],
+      "url": "http://developer.baidu.com"
+    }],
     msg_keys: ["title"]
   };
   console.log('data setting');
