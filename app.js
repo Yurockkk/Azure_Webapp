@@ -84,6 +84,7 @@ app.get('/push',function(req,res){
   };
   console.log('data setting');
   client.pushMsg(option, function(error, result) {
+    console.log(error);
     if(!error){
       console.log('push success');
     }
