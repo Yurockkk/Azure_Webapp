@@ -90,6 +90,7 @@ app.get('/push',function(req,res){
   var counter = 0;
  
   var timmer= setInterval(function(){
+    /*
     client.pushMsg(option,function(err,result){
       counter++;
       console.log('setInterval, counter= '+counter);
@@ -98,7 +99,10 @@ app.get('/push',function(req,res){
         clearInterval(timmer);
       }
     });
-  },30000);
+    */
+    counter++;
+    console.log('setInterval, counter= '+counter);
+  },10000);
 
 });
 //add extract item by category 7/30
