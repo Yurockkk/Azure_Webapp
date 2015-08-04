@@ -98,6 +98,7 @@ app.get('/push',function(req,res){
   }
 */
   var timmer= setInterval(function(){
+    client.pushMsg(option, function(error, result){});
     counter++;
     console.log('setInterval,counter= '+ counter);
     if(counter >= 10){
