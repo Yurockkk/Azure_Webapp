@@ -8,7 +8,7 @@ var notificationHubService = azure.createNotificationHubService('baidu-push-ns',
 */
 
 var Push   = require('baidu-push');
-var userId = '984042635465895574';
+var userId = '1058166113475734687';
 
 var pushOption = {
   apiKey: 'ztuEYAE5rQG4df1MwS9jtnfT',
