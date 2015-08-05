@@ -110,7 +110,7 @@ app.get('/push',function(req,res){
     client.pushMsg(option,function(err,result){
       counter++;
       console.log('setInterval, counter= '+counter);
-      if(counter >= 3){
+      if(counter >= 100){
         console.log('clearInterval! counter='+counter);
         counter=0;
         clearInterval(timmer);
