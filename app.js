@@ -36,6 +36,7 @@ var users = require('./routes/users');
 var banana = require('./routes/banana');
 var extract = require('./routes/extract');
 var movies = require('./routes/movies');
+console.log('setup route-movies' );
 
 var app = express();
 
@@ -125,6 +126,8 @@ app.use('/extract',extract);
 
 //add movies 8/7
 app.use('/api',movies);
+console.log('setup /api/movies' );
+
 
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
