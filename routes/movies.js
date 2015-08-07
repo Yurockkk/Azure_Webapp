@@ -1,7 +1,7 @@
-var Movie = require('../models/movie');
+var Movie = require('../models/movie.js');
 var express = require('express');
 var router = express.Router();
-console.log('In route/movies.js' );
+console.log('In route/movies.js');
 
 router.route('/movies').get(function(req,res){
   console.log('In route/movies.js: /movies, get()');
