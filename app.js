@@ -1,6 +1,7 @@
 var TaskList = require('./routes/tasklist');
 var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
+var 
 /*
 //add push-notification to azure(via baidu)
 var azure = require('azure');
@@ -35,8 +36,8 @@ var users = require('./routes/users');
 //add banana routing
 var banana = require('./routes/banana');
 var extract = require('./routes/extract');
-//var movies = require('./routes/movies');
-//console.log('setup route-movies' );
+var movies = require('./routes/movies');
+console.log('setup route-movies' );
 
 var app = express();
 
