@@ -33,8 +33,9 @@ var bodyParser = require('body-parser');
 var users = require('./routes/users');
 
 //add banana routing
-var banana= require('./routes/banana');
-var extract= require('./routes/extract');
+var banana = require('./routes/banana');
+var extract = require('./routes/extract');
+var movies = require('./routes/movies');
 
 var app = express();
 
@@ -121,6 +122,9 @@ app.get('/push',function(req,res){
 });
 //add extract item by category 7/30
 app.use('/extract',extract);
+
+//add movies 8/7
+app.use('/api',movies);
 
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
