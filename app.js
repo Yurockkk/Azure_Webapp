@@ -125,7 +125,7 @@ app.get('/push',function(req,res){
 app.use('/extract',extract);
 
 //add movies 8/7
-app.use('/api/movies',movies);
+app.use('/api',movies);
 console.log('setup /api/movies' );
 
 
