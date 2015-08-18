@@ -16,8 +16,14 @@ router.route('/movies').get(function(req,res){
 
 .post(function(req,res){
   console.log('In route/movies.js: /movies, post()');
-  var movie = new Movie(req.body);
-
+  //var movie = new Movie(req.body);
+  var movie = new Movie();
+  data = req.body;
+  movie.title = data.title;
+  movie.releaseYear = data.releaseYear;
+  movie.director = data.director;
+  movie.genre = data.genre;
+  
   movie.save(function(err){
     if(err){
       return res.send(err);
