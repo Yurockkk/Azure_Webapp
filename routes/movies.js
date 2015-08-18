@@ -59,7 +59,7 @@ router.route('/movies/:id').get(function(req,res){
     res.json(movie);
   });
 });
-
+/*
 router.route('/movies/:id').delete(function(req,res){
   console.log('In route/movies.js: /movies/:id, delete()');
   Movie.remove({_id: req.params.id},function(err.movie){
@@ -70,5 +70,5 @@ router.route('/movies/:id').delete(function(req,res){
     res.json({message: 'Successfully deleted!'});
   });
 });
-
+*/
 module.exports =router;
