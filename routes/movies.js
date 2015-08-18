@@ -12,8 +12,8 @@ router.route('/movies').get(function(req,res){
 
     res.json(movies);
   });
-});
-/*
+})
+
 .post(function(req,res){
   console.log('In route/movies.js: /movies, post()');
   var movie = new Movie(req.body);
@@ -25,8 +25,8 @@ router.route('/movies').get(function(req,res){
     res.send({message: 'Movie Added'});
   });
 });
-*/
 
+/*
 router.route('/movies/:id').put(function(req,res){
   console.log('In route/movies.js: /movies/:id, put()' );
   Movie.findOne({_id: req.params.id},function(err,movie){
@@ -47,6 +47,7 @@ router.route('/movies/:id').put(function(req,res){
     });
   });
 });
+*/
 
 router.route('/movies/:id').get(function(req,res){
   console.log('In route/movies.js: /movies/:id, get()' );
