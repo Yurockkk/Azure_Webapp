@@ -12,7 +12,8 @@ router.route('/movies').get(function(req,res){
 
     res.json(movies);
   });
-})
+});
+/*
 .post(function(req,res){
   console.log('In route/movies.js: /movies, post()');
   var movie = new Movie(req.body);
@@ -24,6 +25,7 @@ router.route('/movies').get(function(req,res){
     res.send({message: 'Movie Added'});
   });
 });
+*/
 
 router.route('/movies/:id').put(function(req,res){
   console.log('In route/movies.js: /movies/:id, put()' );
@@ -69,4 +71,3 @@ router.route('/movies/:id').delete(function(req,res){
 });
 
 module.exports =router;
-
