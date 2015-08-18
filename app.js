@@ -125,8 +125,8 @@ app.get('/push',function(req,res){
 app.use('/extract',extract);
 
 //add movies 8/7
-//app.use('/api',movies);
-//console.log('setup /api/movies' );
+app.use('/api/movies',movies);
+console.log('setup /api/movies' );
 
 
 app.post('/addtask', taskList.addTask.bind(taskList));
